@@ -66,7 +66,7 @@ class Program
 
                 case "5":
                     executando = false;
-                    Formatacao.Cor("Saindo... Até logo!", ConsoleColor.Green);
+                    Formatacao.Cor("Saindo... ", ConsoleColor.Green);
                     break;
 
                 default:
