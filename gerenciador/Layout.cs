@@ -45,17 +45,23 @@ namespace Tarefas
 
 namespace GerenciarTarefa
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
     using Tarefas;
+
     public class Gerenciador
     {
         private List<Tarefa> listaTarefas = new List<Tarefa>();
         private int proximoId = 1;
+        private string arquivoTarefas = "tarefas.txt";
 
         public void AdicionarTarefa(string descricao)
         {
             var tarefa = new Tarefa(proximoId++, descricao);
             listaTarefas.Add(tarefa);
             Console.WriteLine("Tarefa adicionada com sucesso!");
+            SalvarTarefas();
         }
 
         public void ConcluirTarefa(int id)
@@ -65,6 +71,7 @@ namespace GerenciarTarefa
             {
                 tarefa.Concluida = true;
                 Console.WriteLine("Tarefa concluída com sucesso!");
+                SalvarTarefas();
             }
             else
             {
@@ -93,10 +100,47 @@ namespace GerenciarTarefa
             {
                 listaTarefas.Remove(tarefa);
                 Console.WriteLine("Tarefa removida com sucesso!");
+                SalvarTarefas();
             }
             else
             {
                 Console.WriteLine("Tarefa não encontrada.");
+            }
+        }
+
+        public void SalvarTarefas()
+        {
+            using (StreamWriter writer = new StreamWriter(arquivoTarefas))
+            {
+                foreach (var tarefa in listaTarefas)
+                {
+                    writer.WriteLine($"{tarefa.Id}|{tarefa.Descricao}|{tarefa.Concluida}");
+                }
+            }
+        }
+
+        public void CarregarTarefas()
+        {
+            if (!File.Exists(arquivoTarefas))
+                return;
+
+            using (StreamReader reader = new StreamReader(arquivoTarefas))
+            {
+                string linha;
+                while ((linha = reader.ReadLine()) != null)
+                {
+                    string[] dados = linha.Split('|');
+                    int id = int.Parse(dados[0]);
+                    string descricao = dados[1];
+                    bool concluida = bool.Parse(dados[2]);
+
+                    var tarefa = new Tarefa(id, descricao) { Concluida = concluida };
+                    listaTarefas.Add(tarefa);
+                    if (id >= proximoId)
+                    {
+                        proximoId = id + 1;
+                    }
+                }
             }
         }
     }

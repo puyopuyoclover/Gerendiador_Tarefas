@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using layout;
 using GerenciarTarefa;
 
@@ -7,8 +9,9 @@ class Program
     static void Main(string[] args)
     {
         Gerenciador gerenciador = new Gerenciador();
+        gerenciador.CarregarTarefas();  
+        
         bool executando = true;
-
         while (executando)
         {
             Formatacao.ImprimirCabecalho();
@@ -63,7 +66,7 @@ class Program
 
                 case "5":
                     executando = false;
-                    Formatacao.Cor("Saindo...", ConsoleColor.Green);
+                    Formatacao.Cor("Saindo... Até logo!", ConsoleColor.Green);
                     break;
 
                 default:
