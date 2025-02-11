@@ -15,7 +15,7 @@ class Program
         while (executando)
         {
             Formatacao.ImprimirCabecalho();
-            Formatacao.Cor("Escolha uma opção:", ConsoleColor.Yellow);
+            Formatacao.Cor("Escolha uma opção:", ConsoleColor.White);
             Console.WriteLine("1 - Adicionar Tarefa");
             Console.WriteLine("2 - Listar Tarefa");
             Console.WriteLine("3 - Concluir Tarefa");
@@ -66,7 +66,7 @@ class Program
 
                 case "5":
                     executando = false;
-                    Formatacao.Cor("Saindo... ", ConsoleColor.Green);
+                    Formatacao.Cor("Saindo... ", ConsoleColor.DarkBlue);
                     break;
 
                 default:

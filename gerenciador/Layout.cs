@@ -15,7 +15,7 @@ namespace layout
         public static void ImprimirCabecalho()
         {
             Cor("==================================", ConsoleColor.Cyan);
-            Cor("=       Gerenciador de Tarefas   =", ConsoleColor.Green);
+            Cor("       Gerenciador de Tarefas   ", ConsoleColor.Yellow);
             Cor("==================================", ConsoleColor.Cyan);
         }
     }
