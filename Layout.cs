@@ -12,11 +12,15 @@ namespace layout
             Console.ResetColor();
         }
 
-        public static void ImprimirCabecalho()
+        public static void ImprimirCabecalho(string mensagem)
         {
-            Cor("==================================", ConsoleColor.Cyan);
-            Cor("       Gerenciador de Tarefas   ", ConsoleColor.Yellow);
-            Cor("==================================", ConsoleColor.Cyan);
+          
+            Console.WriteLine("╔" + new string('═', mensagem.Length + 2) + "╗");
+
+            Console.WriteLine($"║ {mensagem} ║");
+
+    
+            Console.WriteLine("╚" + new string('═', mensagem.Length + 2) + "╝");
         }
     }
 }
@@ -37,10 +41,17 @@ namespace Tarefas
         }
 
         public void ExibirTarefa()
-        {
-            Console.WriteLine($"[{Id}] - {Descricao} - {(Concluida ? "Concluída" : "Pendente")}");
+         {
+            
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            
+            
+            Console.WriteLine($"[{(Concluida ? "X" : " ")}] ID: {Id} - {Descricao}");
+            
+            // Reseta a cor para o padrão
+            Console.ResetColor();
         }
-    }
+}
 }
 
 namespace GerenciarTarefa
@@ -49,6 +60,7 @@ namespace GerenciarTarefa
     using System.Collections.Generic;
     using System.IO;
     using Tarefas;
+    using layout;
 
     public class Gerenciador
     {
@@ -60,7 +72,7 @@ namespace GerenciarTarefa
         {
             var tarefa = new Tarefa(proximoId++, descricao);
             listaTarefas.Add(tarefa);
-            Console.WriteLine("Tarefa adicionada com sucesso!");
+            Formatacao.Cor("Tarefa adicionada com sucesso!", ConsoleColor.Green);
             SalvarTarefas();
         }
 
@@ -70,7 +82,7 @@ namespace GerenciarTarefa
             if (tarefa != null)
             {
                 tarefa.Concluida = true;
-                Console.WriteLine("Tarefa concluída com sucesso!");
+                Formatacao.Cor("Tarefa concluída com sucesso!", ConsoleColor.Green);
                 SalvarTarefas();
             }
             else

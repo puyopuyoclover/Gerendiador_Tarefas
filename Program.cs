@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using layout;
 using GerenciarTarefa;
+using Tarefas;
 
 class Program
 {
@@ -14,7 +15,7 @@ class Program
         bool executando = true;
         while (executando)
         {
-            Formatacao.ImprimirCabecalho();
+            Formatacao.ImprimirCabecalho("GERENCIADOR DE TAREFAS");
             Formatacao.Cor("Escolha uma opção:", ConsoleColor.White);
             Console.WriteLine("1 - Adicionar Tarefa");
             Console.WriteLine("2 - Listar Tarefa");
@@ -35,7 +36,7 @@ class Program
                     break;
 
                 case "2":
-                    Formatacao.ImprimirCabecalho();
+                    Formatacao.ImprimirCabecalho("GERENCIADOR DE TAREFAS");
                     Formatacao.Cor("Lista de Tarefas:", ConsoleColor.Yellow);
                     gerenciador.ListarTarefa();
                     break;
@@ -66,7 +67,7 @@ class Program
 
                 case "5":
                     executando = false;
-                    Formatacao.Cor("Saindo... ", ConsoleColor.DarkBlue);
+                    Formatacao.Cor("Saindo... ", ConsoleColor.Red);
                     break;
 
                 default:

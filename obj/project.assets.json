@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alunos\\Documents\\adri git\\Gerendiador_Tarefas\\gerenciador\\gerenciador.csproj",
+      "projectUniqueName": "C:\\Users\\Alunos\\Documents\\adri git\\Gerendiador_Tarefas\\gerenciador.csproj",
       "projectName": "gerenciador",
-      "projectPath": "C:\\Users\\Alunos\\Documents\\adri git\\Gerendiador_Tarefas\\gerenciador\\gerenciador.csproj",
+      "projectPath": "C:\\Users\\Alunos\\Documents\\adri git\\Gerendiador_Tarefas\\gerenciador.csproj",
       "packagesPath": "C:\\Users\\Alunos\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alunos\\Documents\\adri git\\Gerendiador_Tarefas\\gerenciador\\obj\\",
+      "outputPath": "C:\\Users\\Alunos\\Documents\\adri git\\Gerendiador_Tarefas\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Alunos\\AppData\\Roaming\\NuGet\\NuGet.Config"
